@@ -16,7 +16,7 @@ class ApifootballTeamsController < ApplicationController
             end
             @response = Apifootball::APITeams.getallteams
             all_teams = JSON.parse(@response.body)
-            like_teams = all_teams.select {|team| team['team_name'] ==  teams_collection[0] || team['team_name'] == teams_collection[1] || team['team_name'] == teams_collection[2] || team['team_name'] == teams_collection[3] || team['team_name'] == teams_collection[4]}
+            like_teams = all_teams.select {|team| team['team_name'] ==  teams_collection[0] || team['team_name'] == teams_collection[1] || team['team_name'] == teams_collection[2]}
             render json: like_teams
                 else
                     render json: {error: "No user found", status: 400}, status: 400

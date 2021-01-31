@@ -1,9 +1,9 @@
 class TeamsController < ApplicationController
 
-    def index
-        teams = Team.all
-        render json: teams, include: [:user]
-      end
+      # def index
+      #   teams = Team.all
+      #   render json: teams, include: [:user]
+      # end
     
       def show
         team = Team.find_by_id(params[:id])
@@ -17,7 +17,7 @@ class TeamsController < ApplicationController
       def create
         team = Team.new(team_params)
         user = team.user 
-        if user.teams.exists?(:team_name => team.team_name) || user.teams.count > 4
+        if user.teams.exists?(:team_name => team.team_name) || user.teams.count > 2
           render json:{ error: "Unable to add this team", status: 400}, status: 400
           else
             team.save 

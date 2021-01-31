@@ -56,9 +56,7 @@ class API {
             method: "POST",
             headers: this.headers,
             body: JSON.stringify({ user_id: userId, team_name: teamName, team_badge: teamBadge })
-        }).then(this.parseJSON).catch((e) => {
-            alert('There was an error!!');
-        });
+        }).then(this.parseJSON)
     }
 
     deleteTeam = (id) => {
