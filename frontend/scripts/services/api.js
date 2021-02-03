@@ -69,6 +69,4 @@ class API {
     fetchAllteams = () => {
         return fetch(this.allteamsURL).then(this.parseJSON)
     }
-
-
 }
