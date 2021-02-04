@@ -8,7 +8,6 @@ const gridItem = document.querySelector(".grid-item")
 const leftGrid = document.querySelector(".left-grid")
 const centerGrid = document.querySelector(".center-grid")
 const rightGrid = document.querySelector(".right-grid")
-const teamNames = document.getElementsByClassName("team-name")
 const mainContainer = document.querySelector("main")
 let loggedIn = null
 let signedUp = false
@@ -86,16 +85,23 @@ function addTeam(event) {
     api.postTeam(user.id, teamName, teamBadge)
 }
 
+function removeTeam(event) {
+    let user = loggedIn
+    teamName = event.target.dataset.teamname
+    api.deleteTeam(user.id, teamName)
+}
+
+
 function showLikedTeams() {
     user = loggedIn
     api.fetchUserTeams(user.id).then(data => {
         let team = data[0]
         leftGrid.innerHTML += `<div class="grid-item">
                                         <h2>${team.team_name} Players:</h2>
+                                        <button onClick=removeTeam(event) data-teamname="${team.team_name}"> Delete Team </button>
                                          </div>`
         team.players.map(player => {
-            leftGrid.innerHTML += `
-                    <div class="grid-item"> Name: ${player.player_name} <br>
+            leftGrid.innerHTML += `<div class="grid-item"> Name: ${player.player_name} <br>
                                             Age: ${player.player_age} <br>
                                             Number: ${player.player_number} <br>
                                             Country: ${player.player_country} <br>
@@ -105,13 +111,13 @@ function showLikedTeams() {
         })
     })
     api.fetchUserTeams(user.id).then(data => {
-        let team = data[1]
+        let team_1 = data[1]
         centerGrid.innerHTML += `<div class="grid-item">
-                                        <h2>${team.team_name} Players:</h2>
+                                        <h2>${team_1.team_name} Players:</h2>
+                                        <button onClick=removeTeam(event) data-teamname="${team_1.team_name}"> Delete Team </button>
                                          </div>`
-        team.players.map(player => {
-            centerGrid.innerHTML += `
-                    <div class="grid-item"> Name: ${player.player_name} <br>
+        team_1.players.map(player => {
+            centerGrid.innerHTML += `<div class="grid-item"> Name: ${player.player_name} <br>
                                             Age: ${player.player_age} <br>
                                             Number: ${player.player_number} <br>
                                             Country: ${player.player_country} <br>
@@ -121,13 +127,13 @@ function showLikedTeams() {
         })
     })
     api.fetchUserTeams(user.id).then(data => {
-        let team = data[2]
+        let team_2 = data[2]
         rightGrid.innerHTML += `<div class="grid-item">
-                                        <h2>${team.team_name} Players:</h2>
+                                        <h2>${team_2.team_name} Players:</h2>
+                                        <button onClick=removeTeam(event) data-teamname="${team_2.team_name}"> Delete Team </button>
                                          </div>`
-        team.players.map(player => {
-            rightGrid.innerHTML += `
-                    <div class="grid-item"> Name: ${player.player_name} <br>
+        team_2.players.map(player => {
+            rightGrid.innerHTML += `<div class="grid-item"> Name: ${player.player_name} <br>
                                             Age: ${player.player_age} <br>
                                             Number: ${player.player_number} <br>
                                             Country: ${player.player_country} <br>

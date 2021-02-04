@@ -5,6 +5,7 @@ class API {
 
     parseJSON = response => response.json()
 
+
     headers = { "Accepts": "application/json", "Content-Type": "application/json" }
 
     get userURL() {
@@ -59,8 +60,8 @@ class API {
         }).then(this.parseJSON)
     }
 
-    deleteTeam = (id) => {
-        return fetch(this.teamURL + `/${id}`, {
+    deleteTeam = (userId, teamName) => {
+        return fetch(this.userURL + `/${userId}/teams/${teamName}`, {
             method: "DELETE",
             headers: this.headers
         }).then(this.parseJSON)

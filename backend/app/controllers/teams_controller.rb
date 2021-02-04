@@ -25,15 +25,17 @@ class TeamsController < ApplicationController
          end
       end     
     
-      def destroy
-        team = Team.find_by_id(params[:id])
-        if !team
-          render json: {error: "No team by that ID", status: 400}, status: 400
-        else
-          team.destroy
-          render json: team, include: [:user]
-        end
-      end
+      # def destroy
+      #   team = Team.find_by(user_id: params[:user_id], team_name: params[:team_name])
+      #   if !team
+      #     render json: {error: "No team by that name", status: 400}, status: 400
+      #   else
+      #     team.destroy
+      #     render json: team, include: [:user]
+      #   end
+      # end
+
+      
 
       private
 

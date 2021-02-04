@@ -24,6 +24,17 @@ class UsersController < ApplicationController
         end
     end     
 
+    
+    def delete_team
+        team = Team.find_by(user_id: params[:id], team_name: params[:team_name])
+        if !team
+          render json: {error: "No team by that name", status: 400}, status: 400
+        else
+          team.destroy
+          render json: team, include: [:user]
+        end
+    end
+
       private
 
       def user_params
