@@ -82,7 +82,12 @@ function addTeam(event) {
     let user = loggedIn
     teamName = event.target.dataset.teamname
     teamBadge = event.target.dataset.teambadge
-    api.postTeam(user.id, teamName, teamBadge)
+    api.postTeam(user.id, teamName, teamBadge).then(function(object) {
+        newTeam = object
+        if (newTeam.error == "Unable to add this team") {
+            alert("You have the maximum number of teams or you have this team already in your list. Please remove a team before adding a new one")
+        }
+    })
 }
 
 function removeTeam(event) {
