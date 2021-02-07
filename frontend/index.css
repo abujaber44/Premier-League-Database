@@ -37,7 +37,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    bottom: 300px;
+    bottom: 350px;
     align-items: stretch;
     margin-left: 300px;
     margin-right: 300px;
@@ -59,7 +59,8 @@ main {
     top: 100px;
     left: 50px;
     font-size: 18px;
-    font-weight: bold
+    font-weight: bold;
+    color: rgb(34, 59, 139);
 }
 
 #logout {
@@ -83,7 +84,7 @@ input[type=submit] {
 
 #team-collection {
     position: absolute;
-    bottom: 0;
+    bottom: 150px;
     width: 100%;
     height: 100px;
     justify-content: space-evenly;
@@ -108,7 +109,7 @@ h2 {
 
 h3 {
     display: block;
-    font-size: 2em;
+    font-size: 1.5em;
     margin-block-start: 0.83em;
     margin-block-end: 0.83em;
     margin-inline-start: 0px;
