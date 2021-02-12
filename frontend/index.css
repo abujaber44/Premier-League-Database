@@ -71,6 +71,14 @@ main {
     background-color: rgb(34, 59, 139);
 }
 
+#refresh {
+    position: absolute;
+    top: 150px;
+    right: 100px;
+    height: 40px;
+    background-color: rgb(34, 59, 139);
+}
+
 input[type=submit] {
     position: center;
     top: 150px;

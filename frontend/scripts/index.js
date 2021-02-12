@@ -61,7 +61,13 @@ function renderLoggedInUser() {
 function renderTeams() {
     api.fetchAllteams()
         .then(data => {
-            data.map(team => {
+            let teams = data
+            sortedTeams = teams.sort(function(a, b) {
+                let teamA = a.team_name;
+                let teamB = b.team_name;
+                return (teamA < teamB) ? -1 : (teamA > teamB) ? 1 : 0;
+            })
+            sortedTeams.map(team => {
                 mainContainer.innerHTML += `<div class="card">
                     <img src=${team.team_badge} class="team-badge" />
                     <h2 class="team-name">${team.team_name}</h2>
@@ -167,8 +173,14 @@ function showLikedTeams() {
 }
 
 
-// $(window).on('load', function(e) {
-//     $('#refresh').on('click', function(e) {
-//         showLikedTeams();
-//     });
-// });
+$(window).on('load', function(e) {
+    $('#refresh').on('click', function(e) {
+        showLikedTeams();
+    });
+});
+
+
+function sortTeams() {
+    team.sort();
+}
+// rightGrid.innerHTML.trim().length == 0
